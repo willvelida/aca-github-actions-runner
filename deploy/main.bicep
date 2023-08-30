@@ -20,7 +20,7 @@ param acaJobName string = 'github-runner'
 param gitRepositoryUrl string = 'https://github.com/Azure-Samples/container-apps-ci-cd-runner-tutorial.git'
 
 @description('The name of the image that we will create')
-param imageName string = 'github-actions-runner:1.0'
+param imageName string = 'github-actions-runner'
 
 @description('The GitHub PAT token that will be used to authenticate')
 param githubPATtoken string
@@ -58,8 +58,10 @@ module buildAcrImage 'br/public:deployment-scripts/build-acr:2.0.2' = {
     AcrName: acr.name
     gitRepositoryUrl: gitRepositoryUrl
     imageName: imageName
+    imageTag: '1.0'
     gitBranch: 'main'
     acrBuildPlatform: 'linux'
+    dockerfileName: 'Dockerfile.github'
   }
 }
 
