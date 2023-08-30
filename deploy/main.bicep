@@ -120,6 +120,7 @@ resource githubRunner 'Microsoft.App/jobs@2023-05-01' = {
                 runnerScope: 'repo'
                 repos: repoName
                 githubAPIURL: 'https://api.github.com'
+                targetWorkflowQueueLength: '1'
               })
               auth: [
                 {
