@@ -26,10 +26,10 @@ param imageName string = 'github-actions-runner:1.0'
 param githubPATtoken string
 
 @description('The owner of the repository in GitHub')
-param repoOwner string
+param repoOwner string = 'willvelida'
 
 @description('The name of the repo in GitHub')
-param repoName string
+param repoName string = 'my-blog'
 
 resource logAnalytics 'Microsoft.OperationalInsights/workspaces@2022-10-01' = {
   name: logAnalyticsWorkspaceName
