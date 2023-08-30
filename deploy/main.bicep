@@ -23,7 +23,7 @@ param gitRepositoryUrl string = 'https://github.com/Azure-Samples/container-apps
 param imageName string = 'github-actions-runner'
 
 @description('The GitHub PAT token that will be used to authenticate')
-param githubPATtoken string
+param githubPATtoken string = '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'
 
 @description('The owner of the repository in GitHub')
 param repoOwner string = 'willvelida'
@@ -117,7 +117,7 @@ resource githubRunner 'Microsoft.App/jobs@2023-05-01' = {
               name: 'github-runner'
               type: 'github-runner'
               metadata: any({
-                'github-runner': 'https://api.github.com'
+                githubAPIURL: 'https://api.github.com'
                 owner: repoOwner
                 runnerScope: 'repo'
                 repos: repoName
