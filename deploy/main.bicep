@@ -23,7 +23,7 @@ param gitRepositoryUrl string = 'https://github.com/Azure-Samples/container-apps
 param imageName string = 'github-actions-runner'
 
 @description('The GitHub PAT token that will be used to authenticate')
-param githubPATtoken string = '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'
+param githubPATtoken string
 
 @description('The owner of the repository in GitHub')
 param repoOwner string = 'willvelida'
@@ -60,7 +60,6 @@ module buildAcrImage 'br/public:deployment-scripts/build-acr:2.0.2' = {
     imageName: imageName
     imageTag: '1.0'
     gitBranch: 'main'
-    acrBuildPlatform: 'linux'
     dockerfileName: 'Dockerfile.github'
   }
 }
@@ -120,6 +119,7 @@ resource githubRunner 'Microsoft.App/jobs@2023-05-01' = {
                 owner: repoOwner
                 runnerScope: 'repo'
                 repos: repoName
+                githubAPIURL: 'https://api.github.com'
               })
               auth: [
                 {
