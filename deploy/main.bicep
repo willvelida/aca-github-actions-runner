@@ -117,11 +117,9 @@ resource githubRunner 'Microsoft.App/jobs@2023-05-01' = {
               name: 'github-runner'
               type: 'github-runner'
               metadata: any({
-                githubAPIURL: 'https://api.github.com'
                 owner: repoOwner
                 runnerScope: 'repo'
                 repos: repoName
-                targetWorkflowQueueLength: 1
               })
               auth: [
                 {
